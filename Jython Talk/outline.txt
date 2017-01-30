@@ -1,0 +1,125 @@
+
+Outline Short Form
+==================
+
+I. A quick introduction to Java
+    A. Object-Oriented, cross-platform, used for large scale (enterprise) applications
+    B. .java vs. .class file (javac & java programs).  Enter the JVM
+    C. java packages
+    D. .jar files & classpaths
+II. Introducing Jython
+    A. Python interpeter implemented in Java
+    B. Run Python code from Java
+    C. Run Java code from Python
+III. Installing Jython
+    A. Standalone
+    B. Installer
+    C. Apt-get
+IV. Accessing the Jython Interpeter
+    A. access via jython executable
+    B. access interpeter within standalone jar
+V. Running Python code from Java
+    A. ScriptEngine (JSR-223) Approach
+    B. PythonInterpeter
+VI. Running Java code from Python
+    A. Utilizing existing Java classes and methods.
+    B. Extending Java classes
+    C. Integration using Object Factories
+VI. Resources
+
+
+
+Outline Long Form With Notes
+============================
+
+I. A quick introduction to Java
+    A. Object-Oriented, cross-platform, used for large scale (enterprise) applications
+    B. .java vs. .class file (javac & java programs).  Enter the JVM
+    C. java packages
+    D. .jar files & classpaths
+II. Introducing Jython
+    A. Python interpeter implemented in Java
+    B. Run Python code from Java
+    C. Run Java code from Python
+III. Installing Jython
+    A. Standalone: Everything in one .jar
+    B. Installer:  
+        1. Simple GUI installer, but may be run in headless mode with command line only with --console option
+        2. Will install Jython to specified directory
+        2. This is the route I'd recommend (Simple and you get the latest version)
+    C. Apt-get
+        1. packages are jython and jython-doc
+        2. Installs version 2.5.1+ (not the latest version)
+IV. Accessing the Jython Interpeter
+    A. access via jython executable
+    B. ways to access interpeter within standalone jar
+        1. via java -jar
+        2. via java -cp .. org.python.util.jython
+V. Integrating Python Code into Java
+VI. Running Java code from Python
+VI. Resources
+    - jython.org
+
+Notes From: http://www.oraclejavamagazine-digital.com/javamagazine_open/20130304#pg67
+
+    -You can run Python APIs & Frameworks in the JVM (i.e. run Django through the 
+    JVM) [exactly why you'd want to do that I don't know]
+    -You can write a swing App using Python [how does that work]
+    -You can utilize Java librarys and API
+    
+The standalone option does no caching and so avoids the startup overhead 
+(most likely at the cost of some speed in calling Java classes, but I have not 
+profiled it) [Actually this is 
+
+Installer gives option of installing "Standalone
+
+simplest way to install use installer
+
+jython -help brief help message
+jython --help longer help message (
+
+
+command line with classpath specified at command line.
+jython_install/bin/jython -J-cp commons-lang3-3.1/commons-lang3-3.1.jar uses_commons_lang.py 
+
+
+Invoke jython using classpath (here I've added an additional jar)
+java -cp commons-lang3-3.1/commons-lang3-3.1.jar:jython-standalone-2.5.3.jar org.python.util.jython uses_commons_lang.py 
+
+
+Uses of Jython
+- Access Java codebase from Python
+- Access Python codebase from Java
+
+
+Run a snippet of Python code from a class.
+javac -cp jython_install/jython.jar SimpleEmbedded.java
+
+
+Run Python code located in a module.  This module happens to be in the current working directory
+javac -cp jython_install/jython.jar EmbeddedUsingMyModule.java 
+java -cp .:jython_install/jython.jar EmbeddedUsingMyModule
+
+# 
+When using the interactive shell you can call the help() function to access the help system.  
+This trick works in CPython too. 
+
+#misc python note
+a = [i for i in range(0,9)]
+a[::2] # even numbered indexes in array (counting by 2 starting at 0)
+a[1::2] # odd numbered indexes (counting by 2 starting at 1)
+
+# misc python note
+list.extend(anotherList) # items from a list onto a list
+list.insert(2,'3) inster an item at 3rd position
+list.insert(2, anotherList) # works with a list of items too
+
+
+# misc python note
+count method of list (counts number of elements in list which match a value)
+
+
+
+
+
+
