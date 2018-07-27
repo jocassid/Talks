@@ -1,0 +1,10 @@
+seleniumTalk/bin/
+seleniumTalk/geckodriver.log
+seleniumTalk/lib/
+seleniumTalk/lib64
+seleniumTalk/pyvenv.cfg
+seleniumTalk/tests/geckodriver.log
+seleniumTalk/selenium/
+seleniumTalk/tests/.cache/
+**/__pycache__/
+
