@@ -8,3 +8,6 @@ seleniumTalk/selenium/
 seleniumTalk/tests/.cache/
 **/__pycache__/
 
+*.notes.ipynb
+*.slides.ipynb
+**/.ipynb_checkpoints/
