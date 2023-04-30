@@ -11,3 +11,5 @@ seleniumTalk/tests/.cache/
 *.notes.ipynb
 *.slides.ipynb
 **/.ipynb_checkpoints/
+.idea/
+
