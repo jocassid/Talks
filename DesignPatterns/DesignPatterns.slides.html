@@ -15215,16 +15215,16 @@ One approach is to have the subscribers periodically contact the publisher for u
 </div>
 </div>
 </div><aside class="notes">
-A better approache is to have the publisher push
+A better approache is to have the publisher push updates to the subscribers.  This avoids any unnecessary requests to the publisher.
 </aside></section></section><section ><section ><div id="cell-id=20d3fc2d-e9f1-4bbe-afb8-b874cefbf6af" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Publisher</span><span class="p">:</span>  <span class="c1"># The source</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Publisher</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">subscribers</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">def</span> <span class="nf">add_subscriber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subscriber</span><span class="p">):</span>
@@ -15233,7 +15233,7 @@ A better approache is to have the publisher push
         <span class="k">for</span> <span class="n">subscriber</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subscribers</span><span class="p">:</span>
             <span class="n">subscriber</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         
-<span class="k">class</span> <span class="nc">Subscriber</span><span class="p">:</span>  <span class="c1"># The components that get updates from the source</span>
+<span class="k">class</span> <span class="nc">Subscriber</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="k">pass</span>
 </pre></div>
@@ -15243,7 +15243,9 @@ A better approache is to have the publisher push
 </div>
 </div>
 
-</div>
+</div><aside class="notes">
+This is what this approach looks like in code.  The Publisher maintains a list of subscribers and when necessary calls the notify method of all the subscribers.
+</aside>
 <div id="cell-id=fd50db63-aae7-4962-997b-7537bd4f3dfa" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15272,7 +15274,79 @@ A better approache is to have the publisher push
 </div>
 </div>
 </div>
-</div><div id="cell-id=86148a86-7a34-403a-b962-be198db2ba80" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div>
+<div id="cell-id=dff19d5f-c1d8-46c0-bd28-3d3cf158e8e8" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Notes-from-Brandon's-presentation:">Notes from Brandon's presentation:<a class="anchor-link" href="#Notes-from-Brandon's-presentation:">&#182;</a></h2><p><a href="https://www.youtube.com/watch?v=Er5K_nR5lDQ">https://www.youtube.com/watch?v=Er5K_nR5lDQ</a>
+(start of video is repeated if you start 17 minutes in you can skip the repeated section)</p>
+<p>3 reasons that we don't talk about patterns much in Python:</p>
+<ol>
+<li>patterns are baked into the Language and the standard library</li>
+<li>provided by frameworks (i.e. Django &amp; MVC)</li>
+<li>we avoid large complex applications</li>
+</ol>
+<p>Book &quot;A Pattern Language&quot; Christopher Alexander (1977) on Architecture (buildings)</p>
+<p>Book: &quot;Design Patterns - Elements of Reusable Object-oriented Software&quot; Gamma, Helm, Johnson &amp; Vlissides (The Gang of Four)</p>
+<p>not all patterns are Object-oriented patterns.  Using a_dict.get() instead of checking if key exists first.  Avoiding elses in code.</p>
+<p>OO Design patterns maxim: &quot;Program to an interface not an implementation&quot;.  With duck-typing in Python, this is largely automatic.</p>
+<p>Pattern Types:</p>
+<ol>
+<li>Creational</li>
+<li>Structural</li>
+<li>Behavioral</li>
+</ol>
+<p>No separate syntax for creating instances of a class (no new keyword)</p>
+<p>having a new keywords means you can't do things like:</p>
+<ol>
+<li>return another class</li>
+<li>Always return the same instance.</li>
+</ol>
+<p>&quot;So most 'creational patterns' are contortions to avoid making brittle new calls in your C++/Java code&quot;</p>
+<p>Prototype pattern - Creating new objects based on existing objects.  The standard library's copy module takes care of this for us.</p>
+<p>Builder pattern - you feed the builder info on what you want built and it takes care of the gory details of linking the various instances together.  Brandon has an example of building an XML document. At about 40 minutes and</p>
+<p>Left off at 40 min in</p>
+
+</div>
+</div>
+</div>
+</div><div id="cell-id=a70ca575-7bdb-4c53-8203-7ec194d859ae" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Brandon&#39;s take on Python singleton</span>
+<span class="c1"># Don&#39;t use a module-level variable (i.e. my_module.foo) that doesn&#39;t leave </span>
+<span class="c1"># you any room if you need to do something in more than just a variable.</span>
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span> <span class="k">pass</span>
+
+<span class="n">_singleton</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_singleton</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">_singleton</span>
+
+<span class="c1"># &quot;Real&quot; singletons allow caller to specify a subclass the first time the </span>
+<span class="c1"># singleton is retrieved.  A gang of four singleton looks like this:</span>
+
+<span class="n">_other_singleton</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">def</span> <span class="nf">get_other_singleton</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="n">MyClass</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_other_singleton</span>
+    <span class="k">if</span> <span class="n">_other_singleton</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">_other_singleton</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">_other_singleton</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div id="cell-id=5dc621c8-20f2-4745-94c3-32fb0014287f" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
