@@ -15172,7 +15172,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Design-Patterns">Design Patterns<a class="anchor-link" href="#Design-Patterns">&#182;</a></h1><p>(<strong>Caution:</strong> May contain Java)</p>
+<h1 id="Design-Patterns-1.0.1">Design Patterns 1.0.1<a class="anchor-link" href="#Design-Patterns-1.0.1">&#182;</a></h1><p>(<strong>Caution:</strong> May contain Java)</p>
 
 </div>
 </div>
@@ -15261,7 +15261,7 @@ This is what this approach looks like in code.  The Publisher maintains a list o
 </div>
 </div>
 </div>
-</div></section></section><section ><section >
+</div>What we've just seen is an example of the Observer pattern</section></section><section ><section >
 <div id="cell-id=402f3954-4d97-4a71-bc03-4cd6eda526c5" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15292,22 +15292,17 @@ This is what this approach looks like in code.  The Publisher maintains a list o
 </div>
 </div>
 </div>
-</div></section></section><section ><section ><div id="cell-id=3a1e49ad-77c0-4613-9dea-e44dacf3155c" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div></section></section><section ><section >
+<div id="cell-id=c995bde1-15b0-43b6-9aae-9cb1c2382715" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Anyway, Java</span>
-</pre></div>
-
-     </div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Anyway,-Java">Anyway, Java<a class="anchor-link" href="#Anyway,-Java">&#182;</a></h2>
 </div>
 </div>
 </div>
-
 </div></section></section><section ><section >
 <div id="cell-id=fd5195a4-f2e6-43a8-ae47-bbc14e6d2800" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -15315,18 +15310,41 @@ This is what this approach looks like in code.  The Publisher maintains a list o
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<pre><code>public class Duck{
-    public String name;
+<h3 id="Class-Definitions">Class Definitions<a class="anchor-link" href="#Class-Definitions">&#182;</a></h3><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Duck</span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 
-    public Duck(String aName){ // __init__ by any other name
-        name = aName;  // I miss self. already
-    }
-</code></pre>
+<span class="w">    </span><span class="n">Duck</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">){</span><span class="w"> </span><span class="c1">// __init__ by any other name</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span><span class="c1">// equivalent to self.</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">intro</span><span class="p">(){</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello, my name is &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
 
 </div>
 </div>
 </div>
-</div><div id="cell-id=4f828eff-70fb-4484-8076-dec595a78f7b" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div>This is what a class declaration looks like in Java.  Instead of __init__ we have a constructor that has the same name as the class.  Methods need to specify the name and type of all the arguments and return type of the method.
+<div id="cell-id=74aa696a-7f10-4180-a14d-54da7fb220f1" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Interfaces">Interfaces<a class="anchor-link" href="#Interfaces">&#182;</a></h3><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">Flying</span><span class="p">{</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">fly</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">altitude_m</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">Swimming</span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">swim</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div>In Java, interfaces serve as a contract.  Classes which implement an interface need to provide implementations of the methods specified in the interface.  Note how arguments and return types are specified, but there is no code defining how the method operates.<div id="cell-id=713bbd9f-8f9e-484a-8623-fa42c52f2d90" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15434,7 +15452,41 @@ Useful: Builder</p>
 <p>several examples of proxy within standard library (weakref.proxy, xmlrpc), used in zope library.</p>
 <p><strong>Decorator:</strong> not to be confused with Python @decorators.  Simlar to proxy (same methods and attributes), not not completely transparent (alters data coming in and out of subject, masks the behavior of underlying subject) tend to be in the 'glue' code of an application rather than in a library.</p>
 <h3 id="Behavioral-Patterns">Behavioral Patterns<a class="anchor-link" href="#Behavioral-Patterns">&#182;</a></h3><p><strong>Chain of Responsibility:</strong> pass a request along a chain of objects until one decides to handle it.  (used in GUIs and DOMs to handle mouse clicks)</p>
-<p><strong>Command:</strong> instead of calling <code>paint</code></p>
+<p><strong>Command:</strong> Consider a system to do do 2D drawings.  Instead of just calling a <code>draw_line</code> function, instantiate an instance of a</p>
+<p>Before</p>
+<div class="highlight"><pre><span></span><span class="n">draw_line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+<p>After</p>
+<div class="highlight"><pre><span></span><span class="n">line1</span> <span class="o">=</span> <span class="n">DrawLine</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
+<span class="n">line1</span><span class="o">.</span><span class="n">do</span><span class="p">()</span>
+<span class="n">command_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
+
+<span class="n">last_command</span> <span class="o">=</span> <span class="n">command_history</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">last_command</span><span class="o">.</span><span class="n">undo</span><span class="p">()</span>
+</pre></div>
+<p><strong>Interpreter:</strong> build a component that can parse a language and execute the command found within it.</p>
+<p><strong>Iterator:</strong>  Concept baked into Python.  In Python this is anything that implements a <code>__next__</code></p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;iter&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;__iter__&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;next&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;__next__&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+<p>'<strong>iter</strong>' as a generator</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyIterable</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">i</span>
+</pre></div>
+<p><strong>Mediator:</strong> mentioned at 1:03 in Brandon's talk.  Need to see some code to understand</p>
+<p><strong>Memento:</strong> record of an objects inner state.  Allows calling code to restore an object to it's earlier state.</p>
+<p>&quot;We may not see many patterns in our own code, but the frameworks and libraries we use utilize them&quot;</p>
 <p>left off at 59 minutes at the Command pattern</p>
 
 </div>
