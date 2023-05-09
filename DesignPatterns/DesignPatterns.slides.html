@@ -15172,7 +15172,8 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Design-Patterns">Design Patterns<a class="anchor-link" href="#Design-Patterns">&#182;</a></h1>
+<h1 id="Design-Patterns">Design Patterns<a class="anchor-link" href="#Design-Patterns">&#182;</a></h1><p>(<strong>Caution:</strong> May contain Java)</p>
+
 </div>
 </div>
 </div>
@@ -15195,6 +15196,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Approach-1:">Approach 1:<a class="anchor-link" href="#Approach-1:">&#182;</a></h3><p>The various components periodically contact source for updates</p>
 <p><img src="polling.svg" alt="alt" /></p>
 
 </div>
@@ -15209,6 +15211,7 @@ One approach is to have the subscribers periodically contact the publisher for u
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Approach-2:">Approach 2:<a class="anchor-link" href="#Approach-2:">&#182;</a></h1><p>Publisher pushes updates to subscribers whenever it has updates.</p>
 <p><img src="push.svg" alt="alt" /></p>
 
 </div>
@@ -15245,7 +15248,7 @@ A better approache is to have the publisher push updates to the subscribers.  Th
 
 </div><aside class="notes">
 This is what this approach looks like in code.  The Publisher maintains a list of subscribers and when necessary calls the notify method of all the subscribers.
-</aside>
+</aside></section></section><section ><section >
 <div id="cell-id=fd50db63-aae7-4962-997b-7537bd4f3dfa" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15253,11 +15256,93 @@ This is what this approach looks like in code.  The Publisher maintains a list o
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Observer-Pattern">Observer Pattern<a class="anchor-link" href="#Observer-Pattern">&#182;</a></h3><p><em>(a.k.a Event-Subscriber, Publisher-Subscriber Listener)</em></p>
+<p>Publisher pushed updates to subscriber avoiding overhead of unecessary polling.</p>
 
 </div>
 </div>
 </div>
+</div></section></section><section ><section >
+<div id="cell-id=402f3954-4d97-4a71-bc03-4cd6eda526c5" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="So-what-are-patterns-anyway?">So what are patterns anyway?<a class="anchor-link" href="#So-what-are-patterns-anyway?">&#182;</a></h2><ol>
+<li>Provide receipes for solving common problems</li>
+<li>Define a vocabulary for discussing software components</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div id="cell-id=a0f473f8-1653-4594-80b9-f93060717384" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Categories-of-Patterns">Categories of Patterns<a class="anchor-link" href="#Categories-of-Patterns">&#182;</a></h2><ol>
+<li><strong>Creational:</strong> Creating objects</li>
+<li><strong>Structural:</strong> &quot;How to assemble objects and classes into larger structure&quot; [1]</li>
+<li><strong>Behaviorial:</strong> How objects behave.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section ><div id="cell-id=3a1e49ad-77c0-4613-9dea-e44dacf3155c" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Anyway, Java</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section ><section >
+<div id="cell-id=fd5195a4-f2e6-43a8-ae47-bbc14e6d2800" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<pre><code>public class Duck{
+    public String name;
+
+    public Duck(String aName){ // __init__ by any other name
+        name = aName;  // I miss self. already
+    }
+</code></pre>
+
+</div>
+</div>
+</div>
+</div><div id="cell-id=4f828eff-70fb-4484-8076-dec595a78f7b" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section ><section >
 <div id="cell-id=5d41e6ef-d820-4532-bcf9-4edc50f4fc58" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15265,15 +15350,34 @@ This is what this approach looks like in code.  The Publisher maintains a list o
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Resources">Resources<a class="anchor-link" href="#Resources">&#182;</a></h2><ul>
-<li><a href="https://pyvideo.org/pyohio-2012/python-design-patterns-1.html">https://pyvideo.org/pyohio-2012/python-design-patterns-1.html</a></li>
+<li><a href="https://pyvideo.org/pyohio-2012/python-design-patterns-1.html">https://pyvideo.org/pyohio-2012/python-design-patterns-1.html</a> (first 17 minutes is repeated so start at the 17 minute mark)</li>
 <li><a href="https://python-patterns.guide/">https://python-patterns.guide/</a></li>
 <li><a href="https://refactoring.guru">https://refactoring.guru</a></li>
 <li><a href="https://diagrams.mingrammer.com/">https://diagrams.mingrammer.com/</a></li>
+<li><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html">https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html</a></li>
 </ul>
 
 </div>
 </div>
 </div>
+</div><div id="cell-id=f436d777-6738-4cf5-be08-354c6dea824d" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Footnotes</span><span class="p">:</span>
+
+<span class="mf">1.</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">refactoring</span><span class="o">.</span><span class="n">guru</span><span class="o">/</span><span class="n">design</span><span class="o">-</span><span class="n">patterns</span><span class="o">/</span><span class="n">structural</span><span class="o">-</span><span class="n">patterns</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div>
 <div id="cell-id=dff19d5f-c1d8-46c0-bd28-3d3cf158e8e8" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -15299,7 +15403,7 @@ This is what this approach looks like in code.  The Publisher maintains a list o
 <li>Structural</li>
 <li>Behavioral</li>
 </ol>
-<p>No separate syntax for creating instances of a class (no new keyword)</p>
+<h3 id="Creational-Patterns">Creational Patterns<a class="anchor-link" href="#Creational-Patterns">&#182;</a></h3><p>No separate syntax for creating instances of a class (no new keyword)</p>
 <p>having a new keywords means you can't do things like:</p>
 <ol>
 <li>return another class</li>
@@ -15307,8 +15411,31 @@ This is what this approach looks like in code.  The Publisher maintains a list o
 </ol>
 <p>&quot;So most 'creational patterns' are contortions to avoid making brittle new calls in your C++/Java code&quot;</p>
 <p>Prototype pattern - Creating new objects based on existing objects.  The standard library's copy module takes care of this for us.</p>
-<p>Builder pattern - you feed the builder info on what you want built and it takes care of the gory details of linking the various instances together.  Brandon has an example of building an XML document. At about 40 minutes and</p>
+<p>Builder pattern - you feed the builder info on what you want built and it takes care of the gory details of linking the various instances together.  Brandon has an example of building an XML document. At about 40 minutes in.</p>
 <p>Left off at 40 min in</p>
+<p>Designed away by language: Abstract Factory, factory method
+Trivial: Singleton, Prototype
+Useful: Builder</p>
+<h3 id="Structural-Patterns">Structural Patterns<a class="anchor-link" href="#Structural-Patterns">&#182;</a></h3><p><strong>Adapter:</strong> Wrap a class so it behaves like another.  i.e. wrap a socket that it has a <code>read</code> and <code>write</code> method like a file instead of the socket's normal <code>send</code> and <code>recv</code> methods.  (43 min)</p>
+<p><strong>Bridge:</strong> Use subclass for 1 purpose only.  You don't want a bunch of classes like:</p>
+<ul>
+<li>WindowsButton</li>
+<li>WindowsBorderedButton</li>
+<li>LinuxButton</li>
+<li>LinuxBorderedButton</li>
+</ul>
+<p>Mixins may allow your better way to achieve this</p>
+<p><strong>Composite:</strong> A class whose instances are designed to lock together in a tree.  Like <code>Node</code> elements in a Document Object Model.  Very common in the Python World</p>
+<p><strong>Fascade:</strong> An object that hides a complex tree or network of objects.  i.e. etrees root.find() and root.iter() that handle the details of searching and iterating through the tree structure.</p>
+<p><strong>Flyweight:</strong> small immutable object that may be used in a variety of contexts.
+(I think named tuples would be a good way to accomplish this).  python does this for small less than 100 integers.</p>
+<p><strong>Proxy:</strong> proxy object wraps another object called the subject and accepts method calls and attribute lookups on behalf of the subject.</p>
+<p>proxying can be done dynamically via <code>__getattr()__</code> without having to write a bunch of proxying methods.</p>
+<p>several examples of proxy within standard library (weakref.proxy, xmlrpc), used in zope library.</p>
+<p><strong>Decorator:</strong> not to be confused with Python @decorators.  Simlar to proxy (same methods and attributes), not not completely transparent (alters data coming in and out of subject, masks the behavior of underlying subject) tend to be in the 'glue' code of an application rather than in a library.</p>
+<h3 id="Behavioral-Patterns">Behavioral Patterns<a class="anchor-link" href="#Behavioral-Patterns">&#182;</a></h3><p><strong>Chain of Responsibility:</strong> pass a request along a chain of objects until one decides to handle it.  (used in GUIs and DOMs to handle mouse clicks)</p>
+<p><strong>Command:</strong> instead of calling <code>paint</code></p>
+<p>left off at 59 minutes at the Command pattern</p>
 
 </div>
 </div>
