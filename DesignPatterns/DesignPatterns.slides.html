@@ -15184,60 +15184,29 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Let's-start-with-an-example">Let's start with an example<a class="anchor-link" href="#Let's-start-with-an-example">&#182;</a></h2><p><strong>Problem:</strong> We have multiple components that want to get updated information from a single source</p>
+<h2 id="Let's-start-with-an-example-(Observer-Pattern-a.k.a-publisher-subscriber)">Let's start with an example (Observer Pattern a.k.a publisher subscriber)<a class="anchor-link" href="#Let's-start-with-an-example-(Observer-Pattern-a.k.a-publisher-subscriber)">&#182;</a></h2><p><strong>Problem:</strong> We have a <code>Gps</code> class that periodically reads data from a sensor and updates a map and a display of distance traveled.</p>
 
 </div>
 </div>
 </div>
-</div></section></section><section ><section >
-<div id="cell-id=d72baef5-10dd-4de9-96ff-eac98e59ea5f" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Approach-1:">Approach 1:<a class="anchor-link" href="#Approach-1:">&#182;</a></h3><p>The various components periodically contact source for updates</p>
-<p><img src="polling.svg" alt="alt" /></p>
-
-</div>
-</div>
-</div>
-</div><aside class="notes">
-One approach is to have the subscribers periodically contact the publisher for updatess (this is known as polling the publisher).  If updates are frequent this is a reasonable approach.  If updates are infrequent, a lot of effort is waisted polling.
-</aside></section></section><section ><section >
-<div id="cell-id=03463ca0-8099-45df-887d-f849cbca7df2" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Approach-2:">Approach 2:<a class="anchor-link" href="#Approach-2:">&#182;</a></h1><p>Publisher pushes updates to subscribers whenever it has updates.</p>
-<p><img src="push.svg" alt="alt" /></p>
-
-</div>
-</div>
-</div>
-</div><aside class="notes">
-A better approache is to have the publisher push updates to the subscribers.  This avoids any unnecessary requests to the publisher.
-</aside></section></section><section ><section ><div id="cell-id=20d3fc2d-e9f1-4bbe-afb8-b874cefbf6af" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div></section></section><section ><section ><div id="cell-id=040bbde6-760a-45dd-bd7a-83aa5f5a06ca" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Publisher</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">subscribers</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">def</span> <span class="nf">add_subscriber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subscriber</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">subscribers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subscriber</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">publish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">subscriber</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">subscribers</span><span class="p">:</span>
-            <span class="n">subscriber</span><span class="o">.</span><span class="n">notify</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
-<span class="k">class</span> <span class="nc">Subscriber</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define Map and DistanceTraveled classes</span>
+<span class="c1"># (this isn&#39;t the interesting bit)</span>
+<span class="k">class</span> <span class="nc">Map</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class which displays the map&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Distance</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class to track total distance&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">):</span>
         <span class="k">pass</span>
 </pre></div>
 
@@ -15246,29 +15215,151 @@ A better approache is to have the publisher push updates to the subscribers.  Th
 </div>
 </div>
 
+</div></section></section><section ><section ><div id="cell-id=0a777642-4bf2-4fce-92d0-10148c6d6088" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="n">Map</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">main_loop</span><span class="p">():</span>
+        <span class="k">while</span> <span class="n">true</span><span class="p">:</span>
+            <span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div><aside class="notes">
-This is what this approach looks like in code.  The Publisher maintains a list of subscribers and when necessary calls the notify method of all the subscribers.
+Here we create instances of the Map and DistanceTraveled classes in __init__.  In main_loop we read the latitude, longitude, and altitude from a sensor once a second and then update the map and distance traveled.
+</aside></section></section><section ><section ><div id="cell-id=c8bc1100-5087-49be-a7ad-f69d5c45cb5c" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Now the client wants more components</span>
+<span class="k">class</span> <span class="nc">Waypoints</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+<span class="k">class</span> <span class="nc">Speed</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section ><section ><div id="cell-id=dcafa6e9-1a19-434e-a6ea-1fc7950c46c4" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="n">Map</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">main_loop</span><span class="p">():</span>
+        <span class="k">while</span> <span class="n">true</span><span class="p">:</span>
+            <span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><aside class="notes">
+We could add the new components to __init__ and main_loop, but that gets tedious as the number of components increases.  Since all of these components have a update(lat, long, alt) method we can store a list of those components and iterate through that list each time coordinate data is read from the sensor.
+</aside></section></section><section ><section ><div id="cell-id=6825973a-6a4b-49c8-8c83-2c37b5d50622" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>  <span class="c1"># this is an observable in the parlance of the observer pattern</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">observers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span> <span class="nf">main_loop</span><span class="p">():</span>
+        <span class="k">while</span> <span class="n">true</span><span class="p">:</span>
+            <span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">observer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">observers</span><span class="p">:</span>
+                <span class="n">observer</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">)</span>
+                
+<span class="k">def</span> <span class="nf">start_gps</span><span class="p">(</span><span class="n">waypoints_enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">gps</span> <span class="o">=</span> <span class="n">Gps</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">observer</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Waypoints</span><span class="p">(),</span> <span class="n">Distance</span><span class="p">(),</span> <span class="n">Speed</span><span class="p">()]:</span>
+        <span class="n">gps</span><span class="o">.</span><span class="n">observers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">observer</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">waypoints_enabled</span><span class="p">:</span>
+        <span class="n">gps</span><span class="o">.</span><span class="n">observers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Waypoints</span><span class="p">())</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><aside class="notes">
+Written this way, we don't need to touch the GpsModule class when we want to add an observer component.  If there's a observer that is disabled , we don't add it to the GpsModule's list of observers.
 </aside></section></section><section ><section >
-<div id="cell-id=fd50db63-aae7-4962-997b-7537bd4f3dfa" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=f7c67615-a0c0-454c-b723-c7cd6b62cea8" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Observer-Pattern">Observer Pattern<a class="anchor-link" href="#Observer-Pattern">&#182;</a></h3><p><em>(a.k.a Event-Subscriber, Publisher-Subscriber Listener)</em></p>
-<p>Publisher pushed updates to subscriber avoiding overhead of unecessary polling.</p>
+<h2 id="Loose-Coupling">Loose Coupling<a class="anchor-link" href="#Loose-Coupling">&#182;</a></h2><p>The principal that objects should be able to interact with minimal knowledge of each other</p>
 
 </div>
 </div>
 </div>
-</div>What we've just seen is an example of the Observer pattern</section></section><section ><section >
+</div>
+<div id="cell-id=4287875a-01b0-4add-94a3-60b7dfdfce99" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The observer pattern is a way to achieve loose coupling.  In our example, all the Gps class needs to know is that the observer has an update method.  The observer really don't need to know anything about the Gps class.  The more objects need to know about each other, the more likely it is that changes will break something.</p>
+<p>So now we've seen an example ...</p>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
 <div id="cell-id=402f3954-4d97-4a71-bc03-4cd6eda526c5" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="So-what-are-patterns-anyway?">So what are patterns anyway?<a class="anchor-link" href="#So-what-are-patterns-anyway?">&#182;</a></h2><ol>
+<h2 id="What-are-patterns-anyway?">What are patterns anyway?<a class="anchor-link" href="#What-are-patterns-anyway?">&#182;</a></h2><ol>
 <li>Provide receipes for solving common problems</li>
 <li>Define a vocabulary for discussing software components</li>
 </ol>
@@ -15325,7 +15416,9 @@ This is what this approach looks like in code.  The Publisher maintains a list o
 </div>
 </div>
 </div>
-</div>This is what a class declaration looks like in Java.  Instead of __init__ we have a constructor that has the same name as the class.  Methods need to specify the name and type of all the arguments and return type of the method.
+</div><aside class="notes">
+This is what a class declaration looks like in Java.  Instead of __init__ we have a constructor that has the same name as the class.  Methods need to specify the name and type of all the arguments and return type of the method.
+</aside></section></section><section ><section >
 <div id="cell-id=74aa696a-7f10-4180-a14d-54da7fb220f1" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15344,7 +15437,44 @@ This is what this approach looks like in code.  The Publisher maintains a list o
 </div>
 </div>
 </div>
-</div>In Java, interfaces serve as a contract.  Classes which implement an interface need to provide implementations of the methods specified in the interface.  Note how arguments and return types are specified, but there is no code defining how the method operates.<div id="cell-id=713bbd9f-8f9e-484a-8623-fa42c52f2d90" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><aside class="notes">
+In Java, interfaces serve as a contract.  Classes which implement an interface need to provide implementations of the methods specified in the interface.  Note how arguments and return types are specified, but there is no code defining how the method operates.
+</aside>
+<div id="cell-id=b3ce13e3-f2d4-4752-89af-a99943eb2422" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Abstract-classes">Abstract classes<a class="anchor-link" href="#Abstract-classes">&#182;</a></h3><div class="highlight"><pre><span></span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AbstractDuck</span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">quack</span><span class="p">(){</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Quack&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div><aside class="notes">
+Abstract classes are another element of Java.  Abstract classes have proper method declarations, but you cannot create instances of abstract classes.  Instead you create sub-classes of the abstract class which you can create instances of.
+</aside><div id="cell-id=1b645d43-866f-4fa3-bbfd-0075cd850338" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div id="cell-id=6ed73c60-2691-4d76-8c21-108c96b517d7" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15378,24 +15508,21 @@ This is what this approach looks like in code.  The Publisher maintains a list o
 </div>
 </div>
 </div>
-</div><div id="cell-id=f436d777-6738-4cf5-be08-354c6dea824d" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div>
+<div id="cell-id=f1d48d16-89c8-4f31-84c1-339bbbc62867" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Footnotes</span><span class="p">:</span>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Footnotes:</p>
+<ol>
+<li><a href="https://refactoring.guru/design-patterns/structural-patterns">https://refactoring.guru/design-patterns/structural-patterns</a></li>
+</ol>
 
-<span class="mf">1.</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">refactoring</span><span class="o">.</span><span class="n">guru</span><span class="o">/</span><span class="n">design</span><span class="o">-</span><span class="n">patterns</span><span class="o">/</span><span class="n">structural</span><span class="o">-</span><span class="n">patterns</span>
-</pre></div>
-
-     </div>
 </div>
 </div>
 </div>
-
 </div>
 <div id="cell-id=dff19d5f-c1d8-46c0-bd28-3d3cf158e8e8" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -15497,7 +15624,7 @@ Useful: Builder</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Brandon&#39;s take on Python singleton</span>
@@ -15525,7 +15652,33 @@ Useful: Builder</p>
 </div>
 </div>
 
-</div><div id="cell-id=5dc621c8-20f2-4745-94c3-32fb0014287f" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div>
+<div id="cell-id=121eea33-181e-49ae-b5b7-0622c6eabfc6" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Notes-from-%22Head-First-Design-Patterns">Notes from "Head First Design Patterns<a class="anchor-link" href="#Notes-from-%22Head-First-Design-Patterns">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-id=5a28bba6-5de3-4ee6-8d17-03b84085bd08" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Design-Principals">Design Principals<a class="anchor-link" href="#Design-Principals">&#182;</a></h2><p><em>&quot;Identify the aspects of your application that vary and separated them from what stays the same&quot;</em></p>
+<p>This is the essence of refactoring and the Don't Repeat Yourself (DRY) principal.  Identify things that stay the same and build components to encapsulate them.</p>
+<p><em>&quot;Design to an interface, not an implementation&quot;</em></p>
+<p>In the Python standard library there are a lot of objects that have a have a <code>read()</code> method.  If we have a function that will <code>read()</code> from an object we can use it with any object that has a <code>read()</code> method.</p>
+
+</div>
+</div>
+</div>
+</div><div id="cell-id=fd17943b-c27a-487f-9cd8-4111867141c9" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
