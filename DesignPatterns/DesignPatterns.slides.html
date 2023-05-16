@@ -15184,56 +15184,132 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Let's-start-with-an-example-(Observer-Pattern-a.k.a-publisher-subscriber)">Let's start with an example (Observer Pattern a.k.a publisher subscriber)<a class="anchor-link" href="#Let's-start-with-an-example-(Observer-Pattern-a.k.a-publisher-subscriber)">&#182;</a></h2><p><strong>Problem:</strong> We have a <code>Gps</code> class that periodically reads data from a sensor and updates a map and a display of distance traveled.</p>
+<h2 id="Let's-start-with-an-example-(Observer-Pattern-a.k.a-publisher-subscriber)">Let's start with an example (Observer Pattern a.k.a publisher subscriber)<a class="anchor-link" href="#Let's-start-with-an-example-(Observer-Pattern-a.k.a-publisher-subscriber)">&#182;</a></h2><p><strong>Problem:</strong> We have a <code>Gps</code> class that periodically reads position from a sensor.  A map and distance tracker need to be updated with position</p>
 
 </div>
 </div>
 </div>
-</div></section></section><section ><section ><div id="cell-id=040bbde6-760a-45dd-bd7a-83aa5f5a06ca" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div></section></section><section ><section ><div id="cell-id=b925ca0d-77fa-4d8a-82e2-7b3850287d73" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define Map and DistanceTraveled classes</span>
-<span class="c1"># (this isn&#39;t the interesting bit)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Position</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">long</span> <span class="o">=</span> <span class="n">long</span>
+
+<span class="k">class</span> <span class="nc">Sensor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">():</span>
+        <span class="c1"># Or whatever the current coordinates are</span>
+        <span class="k">return</span> <span class="mf">39.97</span><span class="p">,</span> <span class="o">-</span><span class="mf">83.059</span>
+
+<span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">main_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><aside class="notes">
+Getting a fix might take the sensor a couple seconds
+</aside></section></section><section ><section ><div id="cell-id=040bbde6-760a-45dd-bd7a-83aa5f5a06ca" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1st Attempt: have Map and Distance periodically check for updates</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 <span class="k">class</span> <span class="nc">Map</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class which displays the map&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">):</span>
-        <span class="k">pass</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gps</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gps</span> <span class="o">=</span> <span class="n">gps</span>
+    <span class="k">def</span> <span class="nf">main_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">position</span> <span class="o">=</span> <span class="n">Gps</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span>
+            <span class="c1"># update map</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># wait a 1/10th of a second</span>
+            
+<span class="k">class</span> <span class="nc">Distance</span><span class="p">:</span>
+    <span class="k">pass</span>  <span class="c1"># would be set up the same way</span>
+</pre></div>
 
+     </div>
+</div>
+</div>
+</div>
+
+</div><aside class="notes">
+Graphically this looks like this
+</aside></section></section><section ><section >
+<div id="cell-id=902060d0-e36e-4b99-ac2b-ec81f8562457" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="polling.svg" alt="Polling" /></p>
+
+</div>
+</div>
+</div>
+</div><aside class="notes">
+If the position in gps isn't updated frequently a lot of effort can be wasted polling gps for position updates.  Let's try structuring things so the data flow looks like this to avoid unnecessary polling:
+</aside>
+<div id="cell-id=ef1cf840-a7d9-415f-a549-e3aad3457243" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="push.svg" alt="Push" /></p>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section ><div id="cell-id=b1523291-ef4c-49b1-97c5-7f601c401e66" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="n">Map</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="n">Map</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">main_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+    
+<span class="k">class</span> <span class="nc">Map</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A class which displays the map&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="k">pass</span> <span class="c1"># update map</span>
+            
 <span class="k">class</span> <span class="nc">Distance</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class to track total distance&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">):</span>
-        <span class="k">pass</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div></section></section><section ><section ><div id="cell-id=0a777642-4bf2-4fce-92d0-10148c6d6088" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="n">Map</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">main_loop</span><span class="p">():</span>
-        <span class="k">while</span> <span class="n">true</span><span class="p">:</span>
-            <span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-            
-            <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="k">pass</span> <span class="c1"># add to total distance</span>
 </pre></div>
 
      </div>
@@ -15242,23 +15318,23 @@ div.jp-OutputPrompt {
 </div>
 
 </div><aside class="notes">
-Here we create instances of the Map and DistanceTraveled classes in __init__.  In main_loop we read the latitude, longitude, and altitude from a sensor once a second and then update the map and distance traveled.
-</aside></section></section><section ><section ><div id="cell-id=c8bc1100-5087-49be-a7ad-f69d5c45cb5c" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+We've avoided unnecessary polling, but every time we want to add a new component we need to modify the Gps class.  Also Gps needs to know about the Map and Distance classes
+</aside></section></section><section ><section ><div id="cell-id=f8213ecb-c436-4c9a-a859-c57962c0bae4" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Now the client wants more components</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Now the client wants more features</span>
 <span class="k">class</span> <span class="nc">Waypoints</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">):</span>
-        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># update waypoints</span>
     
 <span class="k">class</span> <span class="nc">Speed</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">):</span>
-        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># update current and average speed</span>
 </pre></div>
 
      </div>
@@ -15266,51 +15342,26 @@ Here we create instances of the Map and DistanceTraveled classes in __init__.  I
 </div>
 </div>
 
-</div></section></section><section ><section ><div id="cell-id=dcafa6e9-1a19-434e-a6ea-1fc7950c46c4" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div></section></section><section ><section ><div id="cell-id=6825973a-6a4b-49c8-8c83-2c37b5d50622" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;In the parlance of the observer pattern Gps is </span>
+<span class="sd">    the observable and Map, Distance, Waypoints and </span>
+<span class="sd">    Speed are observers &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="n">Map</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="n">Distance</span><span class="p">()</span>
-    <span class="k">def</span> <span class="nf">main_loop</span><span class="p">():</span>
-        <span class="k">while</span> <span class="n">true</span><span class="p">:</span>
-            <span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-            
-            <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><aside class="notes">
-We could add the new components to __init__ and main_loop, but that gets tedious as the number of components increases.  Since all of these components have a update(lat, long, alt) method we can store a list of those components and iterate through that list each time coordinate data is read from the sensor.
-</aside></section></section><section ><section ><div id="cell-id=6825973a-6a4b-49c8-8c83-2c37b5d50622" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>  <span class="c1"># this is an observable in the parlance of the observer pattern</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">observers</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">def</span> <span class="nf">main_loop</span><span class="p">():</span>
         <span class="k">while</span> <span class="n">true</span><span class="p">:</span>
-            <span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">observer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">observers</span><span class="p">:</span>
-                <span class="n">observer</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">alt</span><span class="p">)</span>
+                <span class="n">observer</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
                 
 <span class="k">def</span> <span class="nf">start_gps</span><span class="p">(</span><span class="n">waypoints_enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">gps</span> <span class="o">=</span> <span class="n">Gps</span><span class="p">()</span>
@@ -15339,20 +15390,9 @@ Written this way, we don't need to touch the GpsModule class when we want to add
 </div>
 </div>
 </div>
-</div>
-<div id="cell-id=4287875a-01b0-4add-94a3-60b7dfdfce99" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>The observer pattern is a way to achieve loose coupling.  In our example, all the Gps class needs to know is that the observer has an update method.  The observer really don't need to know anything about the Gps class.  The more objects need to know about each other, the more likely it is that changes will break something.</p>
-<p>So now we've seen an example ...</p>
+</div>The observer pattern is a way to achieve loose coupling.  In our example, all the Gps class needs to know is that the observer has an update method.  The observer really don't need to know anything about the Gps class.  The more objects need to know about each other, the more likely it is that changes will break something.
 
-</div>
-</div>
-</div>
-</div></section></section><section ><section >
+So now we've seen an example ...</section></section><section ><section >
 <div id="cell-id=402f3954-4d97-4a71-bc03-4cd6eda526c5" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15624,7 +15664,7 @@ Useful: Builder</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Brandon&#39;s take on Python singleton</span>
