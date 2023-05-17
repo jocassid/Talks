@@ -15172,7 +15172,8 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Design-Patterns-1.0.1">Design Patterns 1.0.1<a class="anchor-link" href="#Design-Patterns-1.0.1">&#182;</a></h1><p>(<strong>Caution:</strong> May contain Java)</p>
+<p style="font-size: 2rem; margin-bottom: 0">Design Patterns 1.0.1</p>
+(**Caution:** May contain Java)
 
 </div>
 </div>
@@ -15184,7 +15185,8 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Let's-start-with-an-example-(Observer-Pattern-a.k.a-publisher-subscriber)">Let's start with an example (Observer Pattern a.k.a publisher subscriber)<a class="anchor-link" href="#Let's-start-with-an-example-(Observer-Pattern-a.k.a-publisher-subscriber)">&#182;</a></h2><p><strong>Problem:</strong> We have a <code>Gps</code> class that periodically reads position from a sensor.  A map and distance tracker need to be updated with position</p>
+<h1 id="First-an-example">First an example<a class="anchor-link" href="#First-an-example">&#182;</a></h1><p><em>(Observer Pattern a.k.a publisher subscriber)</em></p>
+<p><strong>Problem:</strong> We have a <code>Gps</code> class that periodically reads position from a sensor.  A map and distance tracker need to be updated with position</p>
 
 </div>
 </div>
@@ -15194,7 +15196,7 @@ div.jp-OutputPrompt {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[51]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Position</span><span class="p">:</span>
@@ -15230,7 +15232,7 @@ Getting a fix might take the sensor a couple seconds
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1st Attempt: have Map and Distance periodically check for updates</span>
@@ -15270,7 +15272,7 @@ Graphically this looks like this
 </div>
 </div><aside class="notes">
 If the position in gps isn't updated frequently a lot of effort can be wasted polling gps for position updates.  Let's try structuring things so the data flow looks like this to avoid unnecessary polling:
-</aside>
+</aside></section></section><section ><section >
 <div id="cell-id=ef1cf840-a7d9-415f-a549-e3aad3457243" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15287,7 +15289,7 @@ If the position in gps isn't updated frequently a lot of effort can be wasted po
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[53]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
@@ -15324,7 +15326,7 @@ We've avoided unnecessary polling, but every time we want to add a new component
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[54]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Now the client wants more features</span>
@@ -15347,7 +15349,7 @@ We've avoided unnecessary polling, but every time we want to add a new component
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
@@ -15385,21 +15387,23 @@ Written this way, we don't need to touch the GpsModule class when we want to add
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Loose-Coupling">Loose Coupling<a class="anchor-link" href="#Loose-Coupling">&#182;</a></h2><p>The principal that objects should be able to interact with minimal knowledge of each other</p>
+<h1 id="Loose-Coupling">Loose Coupling<a class="anchor-link" href="#Loose-Coupling">&#182;</a></h1><p>The principal that objects should be able to interact with minimal knowledge of each other</p>
 
 </div>
 </div>
 </div>
-</div>The observer pattern is a way to achieve loose coupling.  In our example, all the Gps class needs to know is that the observer has an update method.  The observer really don't need to know anything about the Gps class.  The more objects need to know about each other, the more likely it is that changes will break something.
+</div><aside class="notes">
+The observer pattern is a way to achieve loose coupling.  In our example, all the Gps class needs to know is that the observer has an update method.  The observer really don't need to know anything about the Gps class.  The more objects need to know about each other, the more likely it is that changes will break something.
 
-So now we've seen an example ...</section></section><section ><section >
+So now we've seen an example ...
+</aside></section></section><section ><section >
 <div id="cell-id=402f3954-4d97-4a71-bc03-4cd6eda526c5" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="What-are-patterns-anyway?">What are patterns anyway?<a class="anchor-link" href="#What-are-patterns-anyway?">&#182;</a></h2><ol>
+<h1 id="What-are-patterns-anyway?">What are patterns anyway?<a class="anchor-link" href="#What-are-patterns-anyway?">&#182;</a></h1><ol>
 <li>Provide receipes for solving common problems</li>
 <li>Define a vocabulary for discussing software components</li>
 </ol>
@@ -15407,98 +15411,481 @@ So now we've seen an example ...</section></section><section ><section >
 </div>
 </div>
 </div>
-</div></section></section><section ><section >
-<div id="cell-id=a0f473f8-1653-4594-80b9-f93060717384" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Categories-of-Patterns">Categories of Patterns<a class="anchor-link" href="#Categories-of-Patterns">&#182;</a></h2><ol>
-<li><strong>Creational:</strong> Creating objects</li>
-<li><strong>Structural:</strong> &quot;How to assemble objects and classes into larger structure&quot; [1]</li>
-<li><strong>Behaviorial:</strong> How objects behave.</li>
-</ol>
-
-</div>
-</div>
-</div>
-</div></section></section><section ><section >
-<div id="cell-id=c995bde1-15b0-43b6-9aae-9cb1c2382715" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Anyway,-Java">Anyway, Java<a class="anchor-link" href="#Anyway,-Java">&#182;</a></h2>
-</div>
-</div>
-</div>
-</div></section></section><section ><section >
-<div id="cell-id=fd5195a4-f2e6-43a8-ae47-bbc14e6d2800" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Class-Definitions">Class Definitions<a class="anchor-link" href="#Class-Definitions">&#182;</a></h3><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Duck</span><span class="p">{</span>
-<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">Duck</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">){</span><span class="w"> </span><span class="c1">// __init__ by any other name</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span><span class="c1">// equivalent to self.</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">intro</span><span class="p">(){</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello, my name is &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-</pre></div>
-
-</div>
-</div>
-</div>
 </div><aside class="notes">
-This is what a class declaration looks like in Java.  Instead of __init__ we have a constructor that has the same name as the class.  Methods need to specify the name and type of all the arguments and return type of the method.
+there are 3 main categories for design patterns starting with
 </aside></section></section><section ><section >
-<div id="cell-id=74aa696a-7f10-4180-a14d-54da7fb220f1" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div id="cell-id=ddf01241-5356-4d2c-a60a-b11fa4b77fa1" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Interfaces">Interfaces<a class="anchor-link" href="#Interfaces">&#182;</a></h3><div class="highlight"><pre><span></span><span class="kd">interface</span> <span class="nc">Flying</span><span class="p">{</span>
-<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="nf">fly</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">altitude_m</span><span class="p">);</span>
-<span class="p">}</span>
+<h1 id="Creational-Patterns">Creational Patterns<a class="anchor-link" href="#Creational-Patterns">&#182;</a></h1><p>For creating instances of classes</p>
 
-<span class="kd">interface</span> <span class="nc">Swimming</span><span class="p">{</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">swim</span><span class="p">();</span>
-<span class="p">}</span>
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div id="cell-id=92d2ce38-1704-45b0-bafb-7b26999e8512" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Singleton-Pattern">Singleton Pattern<a class="anchor-link" href="#Singleton-Pattern">&#182;</a></h2><p>Goal is to have 1 instance of a particular object in your application.  Common use case is to store the settings of your application.  Django's <code>settings</code> object is a good example:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="n">from_email</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEFAULT_FROM_EMAIL</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section ><div id="cell-id=3ff5136b-cb20-4347-8049-b3974cc08ea1" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[56]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># in config.py module of some app</span>
+
+<span class="k">class</span> <span class="nc">Settings</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># load settings from ~/.myapprc</span>
+    
+
+<span class="n">_settings</span> <span class="o">=</span> <span class="n">Settings</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">get_settings</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">_settings</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><aside class="notes">
+This is a basic way to implement a singleton.  Since Python isn't nearly as restrictive as languages like Java and C#, you can create another instance of Settings in your app.  However if you stick to calling the get_settings method you can achieve the effects of a true singleton.
+</aside></section></section><section ><section >
+<div id="cell-id=b1ffd1e3-c17d-4950-9c9d-4aa7d0c49ae6" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Builder-Pattern">Builder Pattern<a class="anchor-link" href="#Builder-Pattern">&#182;</a></h2><p>Goal is to make it easer to set up complex object composed of other objects</p>
+<p>In this example we are building houses with a variable number of windows, doors, and rooms.  Additionaly houses can have garages, swimming pools, and gardens [2]</p>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section ><div id="cell-id=24201fad-e579-40c9-b6a0-28248439908d" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[57]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First some classes for the optional features</span>
+<span class="k">class</span> <span class="nc">Garage</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">SwimmingPool</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Garden</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section ><section ><div id="cell-id=0bf72e32-e8c6-4455-877c-1e6fcdce0dd9" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[58]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">House1</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">windows</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">doors</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">rooms</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">has_garage</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">has_swimming_pool</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">has_garden</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">windows</span> <span class="o">=</span> <span class="n">windows</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">door</span> <span class="o">=</span> <span class="n">doors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rooms</span> <span class="o">=</span> <span class="n">rooms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">garage</span> <span class="o">=</span> <span class="n">Garage</span><span class="p">()</span> <span class="k">if</span> <span class="n">has_garage</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">swimming_pool</span> <span class="o">=</span> <span class="n">SwimmingPool</span><span class="p">()</span> <span class="k">if</span> <span class="n">has_swimming_pool</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">garden</span> <span class="o">=</span> <span class="n">Garden</span> <span class="k">if</span> <span class="n">has_garden</span> <span class="k">else</span> <span class="kc">None</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><aside class="notes">
+And here is our House class with it's __init__ method.  In Java and (other languages) the calls to create and object look like this:
+</aside></section></section><section ><section >
+<div id="cell-id=1e468663-e68c-4e97-8fd3-83dda9b61975" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Java Constructor (<code>__init__</code>) calls</p>
+<div class="highlight"><pre><span></span><span class="n">House1</span><span class="w"> </span><span class="n">house1</span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">House1</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="n">House1</span><span class="w"> </span><span class="n">hosue2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">House1</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 </div><aside class="notes">
-In Java, interfaces serve as a contract.  Classes which implement an interface need to provide implementations of the methods specified in the interface.  Note how arguments and return types are specified, but there is no code defining how the method operates.
-</aside>
-<div id="cell-id=b3ce13e3-f2d4-4752-89af-a99943eb2422" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+With a large number of arguments to the __init__ method, creating objects can become cumbersome.  The fact we can use keyword=value arguments to specify which default values we're overriding can mitgate this somewhat.
+</aside></section></section><section ><section ><div id="cell-id=78c9599b-05b4-483c-abab-6ed104ae1688" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[59]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">house1</span> <span class="o">=</span> <span class="n">House1</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">has_garden</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">house2</span> <span class="o">=</span> <span class="n">House1</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">has_swimming_pool</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><aside class="notes">
+If the __init__ method gets really complex you can create a HouseBuilder class which breaks the steps of building the objects into separated methods.  In this scenario, our House class would look like this
+</aside></section></section><section ><section ><div id="cell-id=fbf7df9c-9a90-4395-9b3d-d3f71ae2287b" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[60]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">House2</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">windows</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">door</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rooms</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">garage</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">swimming_pool</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">garden</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><aside class="notes">
+and our HouseBuilder looks like this.
+</aside></section></section><section ><section ><div id="cell-id=fa1edd94-4762-41f1-bf55-f9319188341a" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[61]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">HouseBuilder</span><span class="p">:</span>
+    <span class="c1"># Defined HOUSE_CLASS so I don&#39;t need to re-define __init__ and reset in sub-classes</span>
+    <span class="n">HOUSE_CLASS</span> <span class="o">=</span> <span class="n">House2</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">house</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">HOUSE_CLASS</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">house</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">HOUSE_CLASS</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">build_walls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">build_doors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doors</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">build_windows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">windows</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">build_roof</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">build_garage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><aside class="notes">
+We can, of course, create subclasses of HouseBuilder to build specific types of Houses.
+</aside></section></section><section ><section ><div id="cell-id=ee1ce466-3d37-463e-9ec5-1e21e4ff3d87" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[62]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">FancyHouse</span><span class="p">(</span><span class="n">House2</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">FancyHouseBuilder</span><span class="p">(</span><span class="n">HouseBuilder</span><span class="p">):</span>
+    <span class="n">HOUSE_CLASS</span> <span class="o">=</span> <span class="n">FancyHouse</span>
+    <span class="k">def</span> <span class="nf">build_walls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># build fancy walls</span>
+    <span class="k">def</span> <span class="nf">build_roof</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># build fancy roof</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section ><section ><div id="cell-id=d107c666-35de-4157-a2be-8f66f4dc388e" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[63]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">SimpleHouse</span><span class="p">(</span><span class="n">House2</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">SimpleHouseBuilder</span><span class="p">(</span><span class="n">HouseBuilder</span><span class="p">):</span>
+    <span class="n">HOUSE_CLASS</span> <span class="o">=</span> <span class="n">SimpleHouse</span>
+    <span class="k">def</span> <span class="nf">build_garage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># builds a carport instead</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><aside class="notes">
+If you want to mask the details of the Builders in your client code you can do something like this.
+</aside></section></section><section ><section ><div id="cell-id=7199132c-e2f9-478d-a1cd-9ddc2e4fe2fd" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[64]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Director</span><span class="p">:</span>
+    <span class="n">BUILDERS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">House2</span><span class="p">:</span> <span class="n">HouseBuilder</span><span class="p">(),</span>
+        <span class="n">FancyHouse</span><span class="p">:</span> <span class="n">FancyHouseBuilder</span><span class="p">(),</span>
+        <span class="n">SimpleHouse</span><span class="p">:</span> <span class="n">SimpleHouseBuilder</span><span class="p">(),</span>
+    <span class="p">}</span>
+    <span class="k">def</span> <span class="nf">make</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">house_class</span><span class="p">,</span> <span class="n">doors</span><span class="p">,</span> <span class="n">windows</span><span class="p">):</span>
+        <span class="n">builder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">BUILDERS</span><span class="p">[</span><span class="n">house_class</span><span class="p">]</span>
+        <span class="n">builder</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="n">builder</span><span class="o">.</span><span class="n">build_walls</span><span class="p">()</span>
+        <span class="n">builder</span><span class="o">.</span><span class="n">build_doors</span><span class="p">(</span><span class="n">doors</span><span class="p">)</span>
+        <span class="n">builder</span><span class="o">.</span><span class="n">build_windows</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span>
+        <span class="n">builder</span><span class="o">.</span><span class="n">build_roof</span><span class="p">()</span>
+        <span class="n">builder</span><span class="o">.</span><span class="n">build_garage</span><span class="p">()</span>    
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section ><section ><div id="cell-id=26a65f1c-4767-46ba-b788-e5771b353a37" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[65]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Example of a builder in the lxml library [3]</span>
+<span class="kn">from</span> <span class="nn">lxml.builder</span> <span class="kn">import</span> <span class="n">E</span>
+
+<span class="n">doc</span> <span class="o">=</span> <span class="n">E</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">,</span> 
+        <span class="n">E</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">,</span> <span class="s1">&#39;The Title&#39;</span><span class="p">),</span> 
+        <span class="n">E</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="s1">&#39;Always write Python&#39;</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section ><section >
+<div id="cell-id=165a01f6-4143-4441-b470-569278c52730" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Abstract-classes">Abstract classes<a class="anchor-link" href="#Abstract-classes">&#182;</a></h3><div class="highlight"><pre><span></span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AbstractDuck</span><span class="p">{</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">quack</span><span class="p">(){</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Quack&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<h2 id="Prototype-Pattern">Prototype Pattern<a class="anchor-link" href="#Prototype-Pattern">&#182;</a></h2><p>Goal create new objects from existing objects.  In Java/C# you might create a Prototype <code>interface</code> stipulating that implementing classes should have a <code>clone()</code> method.  In Python we use <code>copy</code> and <code>deepcopy</code> from Pythons <code>copy</code> standard library module.</p>
 
 </div>
 </div>
 </div>
-</div><aside class="notes">
-Abstract classes are another element of Java.  Abstract classes have proper method declarations, but you cannot create instances of abstract classes.  Instead you create sub-classes of the abstract class which you can create instances of.
-</aside><div id="cell-id=1b645d43-866f-4fa3-bbfd-0075cd850338" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div></section></section><section ><section ><div id="cell-id=79c6aad9-8dc8-4dc8-a318-09852bf6475c" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[66]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        
+<span class="k">class</span> <span class="nc">Triangle</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p3</span> <span class="o">=</span> <span class="n">p3</span>
+
+<span class="n">t1</span> <span class="o">=</span> <span class="n">Triangle</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section ><section ><div id="cell-id=17417b64-45b8-4b1d-a1b4-106648d91ab9" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[67]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This shows the memory address of the objects</span>
+<span class="k">def</span> <span class="nf">show_ids</span><span class="p">(</span><span class="n">triangle</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t  </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">triangle</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p1 </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">triangle</span><span class="o">.</span><span class="n">p1</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p2 </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">triangle</span><span class="o">.</span><span class="n">p2</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p3 </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">triangle</span><span class="o">.</span><span class="n">p3</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section ><section ><div id="cell-id=9a5b56f8-41d3-4274-9f04-336fe1c523aa" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+<span class="n">show_ids</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">show_ids</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>t  139,999,159,879,232
+p1 139,999,156,720,064
+p2 139,999,156,722,224
+p3 139,999,159,880,672
+
+t  139,998,816,296,000
+p1 139,999,156,720,064
+p2 139,999,156,722,224
+p3 139,999,159,880,672
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section ><section ><div id="cell-id=d7a81314-5afb-433f-a90e-5e86cea51914" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[69]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="n">show_ids</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="n">t3</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">show_ids</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>t  139,999,159,879,232
+p1 139,999,156,720,064
+p2 139,999,156,722,224
+p3 139,999,159,880,672
+
+t  139,999,159,938,640
+p1 139,999,159,936,048
+p2 139,999,159,939,024
+p3 139,999,158,310,896
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div id="cell-id=110a2ea1-a610-4c5e-842e-3aac3eb3214f" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15514,7 +15901,208 @@ Abstract classes are another element of Java.  Abstract classes have proper meth
 </div>
 </div>
 
-</div><div id="cell-id=6ed73c60-2691-4d76-8c21-108c96b517d7" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div id="cell-id=8b6c6ff9-49b5-420f-9455-6772d3692cc6" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div id="cell-id=b8be1e02-540f-4857-9700-5d41a7e222d8" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div id="cell-id=0ee05c42-d799-4b8a-bdde-b40c39fafa51" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div id="cell-id=3b2e7c13-9078-42b2-94fb-e4b3afbd3114" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Structural-Patterns">Structural Patterns<a class="anchor-link" href="#Structural-Patterns">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-id=aa159d4c-2d76-4ebd-a8a6-5d1beee86417" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Behavioral-Patterns">Behavioral Patterns<a class="anchor-link" href="#Behavioral-Patterns">&#182;</a></h1><p>Define how classes behave and interact</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-id=88d8381a-99b0-4f52-a505-854735bd198f" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Iterator-Pattern">Iterator Pattern<a class="anchor-link" href="#Iterator-Pattern">&#182;</a></h2><p>Goal: To access all the items in a data structure (<code>list</code>, <code>set</code>, <code>dict</code>, tree, queue, graph, etc)</p>
+<p>This is baked into Python and the standard library</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-id=3ba6797a-68df-44f5-8bd3-3d77a765b002" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>In Python:</p>
+<table>
+  <thead>
+    <tr>
+      <td>Object Type</td>
+      <td>Has Special Method</td>
+      <td>Corresponding built-in function</td>  
+    </tr>    
+  </thead>
+  <tbody>
+    <tr>
+      <td>iterable</td>  
+      <td><code>__iter__()</code></td>
+      <td><code>iter()</code></td>
+    </tr>
+    <tr>
+      <td>iterator</td>  
+      <td><code>__next__()</code></td>
+      <td><code>next()</code></td>
+    </tr>
+  </tbody>      
+</table>
+
+</div>
+</div>
+</div>
+</div><div id="cell-id=3a0d892c-bafc-49a7-aafa-7d4768b2432c" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[74]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Loop through a list (the hard way)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">itr</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        
+<span class="c1"># Python does this automagically when you do this:</span>
+<span class="c1"># for value in a:</span>
+<span class="c1">#     print(value)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>0
+1
+2
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div id="cell-id=eec3cc4f-d2d1-4569-9951-f46f30c2943c" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div id="cell-id=ef86224f-46fb-4b96-a3ab-06592fa30f5d" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div id="cell-id=10da5c61-0c4a-4c67-9c01-12deff1615d2" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15537,8 +16125,12 @@ Abstract classes are another element of Java.  Abstract classes have proper meth
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Resources">Resources<a class="anchor-link" href="#Resources">&#182;</a></h2><ul>
-<li><a href="https://pyvideo.org/pyohio-2012/python-design-patterns-1.html">https://pyvideo.org/pyohio-2012/python-design-patterns-1.html</a> (first 17 minutes is repeated so start at the 17 minute mark)</li>
+<h1 id="Resources">Resources<a class="anchor-link" href="#Resources">&#182;</a></h1><ul>
+<li>Brandon Rhodes Design Patterns 1 (start of video is repeated, start at 17 min)<ul>
+<li><a href="https://pyvideo.org/pyohio-2012/python-design-patterns-1.html">https://pyvideo.org/pyohio-2012/python-design-patterns-1.html</a></li>
+<li><a href="https://www.youtube.com/watch?v=Er5K_nR5lDQ">https://www.youtube.com/watch?v=Er5K_nR5lDQ</a></li>
+</ul>
+</li>
 <li><a href="https://python-patterns.guide/">https://python-patterns.guide/</a></li>
 <li><a href="https://refactoring.guru">https://refactoring.guru</a></li>
 <li><a href="https://diagrams.mingrammer.com/">https://diagrams.mingrammer.com/</a></li>
@@ -15555,165 +16147,11 @@ Abstract classes are another element of Java.  Abstract classes have proper meth
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Footnotes:</p>
-<ol>
+<h1 id="Footnotes">Footnotes<a class="anchor-link" href="#Footnotes">&#182;</a></h1><ol>
 <li><a href="https://refactoring.guru/design-patterns/structural-patterns">https://refactoring.guru/design-patterns/structural-patterns</a></li>
+<li><a href="https://refactoring.guru/design-patterns/builder">https://refactoring.guru/design-patterns/builder</a></li>
+<li><a href="https://www.youtube.com/watch?v=Er5K_nR5lDQ">https://www.youtube.com/watch?v=Er5K_nR5lDQ</a> [40 minutes]</li>
 </ol>
-
-</div>
-</div>
-</div>
-</div>
-<div id="cell-id=dff19d5f-c1d8-46c0-bd28-3d3cf158e8e8" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Notes-from-Brandon's-presentation:">Notes from Brandon's presentation:<a class="anchor-link" href="#Notes-from-Brandon's-presentation:">&#182;</a></h2><p><a href="https://www.youtube.com/watch?v=Er5K_nR5lDQ">https://www.youtube.com/watch?v=Er5K_nR5lDQ</a>
-(start of video is repeated if you start 17 minutes in you can skip the repeated section)</p>
-<p>3 reasons that we don't talk about patterns much in Python:</p>
-<ol>
-<li>patterns are baked into the Language and the standard library</li>
-<li>provided by frameworks (i.e. Django &amp; MVC)</li>
-<li>we avoid large complex applications</li>
-</ol>
-<p>Book &quot;A Pattern Language&quot; Christopher Alexander (1977) on Architecture (buildings)</p>
-<p>Book: &quot;Design Patterns - Elements of Reusable Object-oriented Software&quot; Gamma, Helm, Johnson &amp; Vlissides (The Gang of Four)</p>
-<p>not all patterns are Object-oriented patterns.  Using a_dict.get() instead of checking if key exists first.  Avoiding elses in code.</p>
-<p>OO Design patterns maxim: &quot;Program to an interface not an implementation&quot;.  With duck-typing in Python, this is largely automatic.</p>
-<p>Pattern Types:</p>
-<ol>
-<li>Creational</li>
-<li>Structural</li>
-<li>Behavioral</li>
-</ol>
-<h3 id="Creational-Patterns">Creational Patterns<a class="anchor-link" href="#Creational-Patterns">&#182;</a></h3><p>No separate syntax for creating instances of a class (no new keyword)</p>
-<p>having a new keywords means you can't do things like:</p>
-<ol>
-<li>return another class</li>
-<li>Always return the same instance.</li>
-</ol>
-<p>&quot;So most 'creational patterns' are contortions to avoid making brittle new calls in your C++/Java code&quot;</p>
-<p>Prototype pattern - Creating new objects based on existing objects.  The standard library's copy module takes care of this for us.</p>
-<p>Builder pattern - you feed the builder info on what you want built and it takes care of the gory details of linking the various instances together.  Brandon has an example of building an XML document. At about 40 minutes in.</p>
-<p>Left off at 40 min in</p>
-<p>Designed away by language: Abstract Factory, factory method
-Trivial: Singleton, Prototype
-Useful: Builder</p>
-<h3 id="Structural-Patterns">Structural Patterns<a class="anchor-link" href="#Structural-Patterns">&#182;</a></h3><p><strong>Adapter:</strong> Wrap a class so it behaves like another.  i.e. wrap a socket that it has a <code>read</code> and <code>write</code> method like a file instead of the socket's normal <code>send</code> and <code>recv</code> methods.  (43 min)</p>
-<p><strong>Bridge:</strong> Use subclass for 1 purpose only.  You don't want a bunch of classes like:</p>
-<ul>
-<li>WindowsButton</li>
-<li>WindowsBorderedButton</li>
-<li>LinuxButton</li>
-<li>LinuxBorderedButton</li>
-</ul>
-<p>Mixins may allow your better way to achieve this</p>
-<p><strong>Composite:</strong> A class whose instances are designed to lock together in a tree.  Like <code>Node</code> elements in a Document Object Model.  Very common in the Python World</p>
-<p><strong>Fascade:</strong> An object that hides a complex tree or network of objects.  i.e. etrees root.find() and root.iter() that handle the details of searching and iterating through the tree structure.</p>
-<p><strong>Flyweight:</strong> small immutable object that may be used in a variety of contexts.
-(I think named tuples would be a good way to accomplish this).  python does this for small less than 100 integers.</p>
-<p><strong>Proxy:</strong> proxy object wraps another object called the subject and accepts method calls and attribute lookups on behalf of the subject.</p>
-<p>proxying can be done dynamically via <code>__getattr()__</code> without having to write a bunch of proxying methods.</p>
-<p>several examples of proxy within standard library (weakref.proxy, xmlrpc), used in zope library.</p>
-<p><strong>Decorator:</strong> not to be confused with Python @decorators.  Simlar to proxy (same methods and attributes), not not completely transparent (alters data coming in and out of subject, masks the behavior of underlying subject) tend to be in the 'glue' code of an application rather than in a library.</p>
-<h3 id="Behavioral-Patterns">Behavioral Patterns<a class="anchor-link" href="#Behavioral-Patterns">&#182;</a></h3><p><strong>Chain of Responsibility:</strong> pass a request along a chain of objects until one decides to handle it.  (used in GUIs and DOMs to handle mouse clicks)</p>
-<p><strong>Command:</strong> Consider a system to do do 2D drawings.  Instead of just calling a <code>draw_line</code> function, instantiate an instance of a</p>
-<p>Before</p>
-<div class="highlight"><pre><span></span><span class="n">draw_line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-</pre></div>
-<p>After</p>
-<div class="highlight"><pre><span></span><span class="n">line1</span> <span class="o">=</span> <span class="n">DrawLine</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">):</span>
-<span class="n">line1</span><span class="o">.</span><span class="n">do</span><span class="p">()</span>
-<span class="n">command_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
-
-<span class="n">last_command</span> <span class="o">=</span> <span class="n">command_history</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">last_command</span><span class="o">.</span><span class="n">undo</span><span class="p">()</span>
-</pre></div>
-<p><strong>Interpreter:</strong> build a component that can parse a language and execute the command found within it.</p>
-<p><strong>Iterator:</strong>  Concept baked into Python.  In Python this is anything that implements a <code>__next__</code></p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;iter&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
-<span class="p">[</span><span class="s1">&#39;__iter__&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">itr</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;next&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span>
-<span class="p">[</span><span class="s1">&#39;__next__&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
-<span class="mi">0</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">next</span><span class="p">(</span><span class="n">iterator</span><span class="p">)</span>
-<span class="mi">1</span>
-<span class="o">&gt;&gt;&gt;</span>
-</pre></div>
-<p>'<strong>iter</strong>' as a generator</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyIterable</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">contents</span><span class="p">:</span>
-            <span class="k">yield</span> <span class="n">i</span>
-</pre></div>
-<p><strong>Mediator:</strong> mentioned at 1:03 in Brandon's talk.  Need to see some code to understand</p>
-<p><strong>Memento:</strong> record of an objects inner state.  Allows calling code to restore an object to it's earlier state.</p>
-<p>&quot;We may not see many patterns in our own code, but the frameworks and libraries we use utilize them&quot;</p>
-<p>left off at 59 minutes at the Command pattern</p>
-
-</div>
-</div>
-</div>
-</div><div id="cell-id=a70ca575-7bdb-4c53-8203-7ec194d859ae" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Brandon&#39;s take on Python singleton</span>
-<span class="c1"># Don&#39;t use a module-level variable (i.e. my_module.foo) that doesn&#39;t leave </span>
-<span class="c1"># you any room if you need to do something in more than just a variable.</span>
-<span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span> <span class="k">pass</span>
-
-<span class="n">_singleton</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">get_singleton</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">_singleton</span>
-
-<span class="c1"># &quot;Real&quot; singletons allow caller to specify a subclass the first time the </span>
-<span class="c1"># singleton is retrieved.  A gang of four singleton looks like this:</span>
-
-<span class="n">_other_singleton</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="k">def</span> <span class="nf">get_other_singleton</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="n">MyClass</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">_other_singleton</span>
-    <span class="k">if</span> <span class="n">_other_singleton</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">_other_singleton</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">_other_singleton</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div id="cell-id=121eea33-181e-49ae-b5b7-0622c6eabfc6" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Notes-from-%22Head-First-Design-Patterns">Notes from "Head First Design Patterns<a class="anchor-link" href="#Notes-from-%22Head-First-Design-Patterns">&#182;</a></h1>
-</div>
-</div>
-</div>
-</div>
-<div id="cell-id=5a28bba6-5de3-4ee6-8d17-03b84085bd08" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Design-Principals">Design Principals<a class="anchor-link" href="#Design-Principals">&#182;</a></h2><p><em>&quot;Identify the aspects of your application that vary and separated them from what stays the same&quot;</em></p>
-<p>This is the essence of refactoring and the Don't Repeat Yourself (DRY) principal.  Identify things that stay the same and build components to encapsulate them.</p>
-<p><em>&quot;Design to an interface, not an implementation&quot;</em></p>
-<p>In the Python standard library there are a lot of objects that have a have a <code>read()</code> method.  If we have a function that will <code>read()</code> from an object we can use it with any object that has a <code>read()</code> method.</p>
 
 </div>
 </div>
