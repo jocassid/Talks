@@ -15173,7 +15173,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p style="font-size: 2rem; margin-bottom: 0">Design Patterns 1.0.1</p>
-(**Caution:** May contain Java)
+<p>(<strong>Caution:</strong> May contain Java)</p>
 
 </div>
 </div>
@@ -15196,7 +15196,7 @@ div.jp-OutputPrompt {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[51]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Position</span><span class="p">:</span>
@@ -15232,7 +15232,7 @@ Getting a fix might take the sensor a couple seconds
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[52]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1st Attempt: have Map and Distance periodically check for updates</span>
@@ -15289,10 +15289,11 @@ If the position in gps isn't updated frequently a lot of effort can be wasted po
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[53]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 2nd attempt have Gps read sensor and notify components</span>
+<span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sensor</span> <span class="o">=</span> <span class="n">Sensor</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="n">Map</span><span class="p">()</span>
@@ -15326,7 +15327,7 @@ We've avoided unnecessary polling, but every time we want to add a new component
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[54]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Now the client wants more features</span>
@@ -15349,10 +15350,11 @@ We've avoided unnecessary polling, but every time we want to add a new component
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[55]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 3rd and final version.  Read sensor and notfy generic observers</span>
+<span class="k">class</span> <span class="nc">Gps</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;In the parlance of the observer pattern Gps is </span>
 <span class="sd">    the observable and Map, Distance, Waypoints and </span>
 <span class="sd">    Speed are observers &quot;&quot;&quot;</span>
@@ -15405,7 +15407,7 @@ So now we've seen an example ...
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="What-are-patterns-anyway?">What are patterns anyway?<a class="anchor-link" href="#What-are-patterns-anyway?">&#182;</a></h1><ol>
 <li>Provide receipes for solving common problems</li>
-<li>Define a vocabulary for discussing software components</li>
+<li>Define a vocabulary for discussing software components (as a bonus this vocabulary helps in naming components).</li>
 </ol>
 
 </div>
@@ -15445,7 +15447,7 @@ there are 3 main categories for design patterns starting with
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[56]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># in config.py module of some app</span>
@@ -15485,7 +15487,7 @@ This is a basic way to implement a singleton.  Since Python isn't nearly as rest
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[57]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># First some classes for the optional features</span>
@@ -15509,7 +15511,7 @@ This is a basic way to implement a singleton.  Since Python isn't nearly as rest
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[58]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">House1</span><span class="p">:</span>
@@ -15556,7 +15558,7 @@ With a large number of arguments to the __init__ method, creating objects can be
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[59]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">house1</span> <span class="o">=</span> <span class="n">House1</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">has_garden</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -15575,7 +15577,7 @@ If the __init__ method gets really complex you can create a HouseBuilder class w
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[60]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">House2</span><span class="p">:</span>
@@ -15600,7 +15602,7 @@ and our HouseBuilder looks like this.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[61]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">HouseBuilder</span><span class="p">:</span>
@@ -15634,7 +15636,7 @@ We can, of course, create subclasses of HouseBuilder to build specific types of 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[62]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">FancyHouse</span><span class="p">(</span><span class="n">House2</span><span class="p">):</span>
@@ -15658,7 +15660,7 @@ We can, of course, create subclasses of HouseBuilder to build specific types of 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[63]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">SimpleHouse</span><span class="p">(</span><span class="n">House2</span><span class="p">):</span>
@@ -15682,7 +15684,7 @@ If you want to mask the details of the Builders in your client code you can do s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[64]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Director</span><span class="p">:</span>
@@ -15711,7 +15713,7 @@ If you want to mask the details of the Builders in your client code you can do s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[65]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Example of a builder in the lxml library [3]</span>
@@ -15744,7 +15746,7 @@ If you want to mask the details of the Builders in your client code you can do s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[66]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
@@ -15771,7 +15773,7 @@ If you want to mask the details of the Builders in your client code you can do s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[67]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This shows the memory address of the objects</span>
@@ -15792,7 +15794,7 @@ If you want to mask the details of the Builders in your client code you can do s
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
@@ -15819,15 +15821,15 @@ If you want to mask the details of the Builders in your client code you can do s
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>t  139,999,159,879,232
-p1 139,999,156,720,064
-p2 139,999,156,722,224
-p3 139,999,159,880,672
+<pre>t  140,197,467,053,456
+p1 140,197,466,971,440
+p2 140,197,466,969,664
+p3 140,197,466,969,616
 
-t  139,998,816,296,000
-p1 139,999,156,720,064
-p2 139,999,156,722,224
-p3 139,999,159,880,672
+t  140,197,467,052,736
+p1 140,197,466,971,440
+p2 140,197,466,969,664
+p3 140,197,466,969,616
 </pre>
 </div>
 </div>
@@ -15841,7 +15843,7 @@ p3 139,999,159,880,672
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[69]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
@@ -15868,15 +15870,15 @@ p3 139,999,159,880,672
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>t  139,999,159,879,232
-p1 139,999,156,720,064
-p2 139,999,156,722,224
-p3 139,999,159,880,672
+<pre>t  140,197,467,053,456
+p1 140,197,466,971,440
+p2 140,197,466,969,664
+p3 140,197,466,969,616
 
-t  139,999,159,938,640
-p1 139,999,159,936,048
-p2 139,999,159,939,024
-p3 139,999,158,310,896
+t  140,197,467,053,888
+p1 140,197,467,052,112
+p2 140,197,467,050,768
+p3 140,197,467,052,064
 </pre>
 </div>
 </div>
@@ -15885,94 +15887,104 @@ p3 139,999,158,310,896
 
 </div>
 
-</div><div id="cell-id=110a2ea1-a610-4c5e-842e-3aac3eb3214f" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div id="cell-id=8b6c6ff9-49b5-420f-9455-6772d3692cc6" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div id="cell-id=b8be1e02-540f-4857-9700-5d41a7e222d8" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div id="cell-id=0ee05c42-d799-4b8a-bdde-b40c39fafa51" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
+</div></section></section><section ><section >
 <div id="cell-id=3b2e7c13-9078-42b2-94fb-e4b3afbd3114" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Structural-Patterns">Structural Patterns<a class="anchor-link" href="#Structural-Patterns">&#182;</a></h1>
+<h1 id="Structural-Patterns">Structural Patterns<a class="anchor-link" href="#Structural-Patterns">&#182;</a></h1><p>Defines how application or parts of it are structured</p>
+
 </div>
 </div>
 </div>
+</div></section></section><section ><section >
+<div id="cell-id=80114568-15df-4130-b11a-9b76fe27764c" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Model-View-Controller-(MVC)">Model View Controller (MVC)<a class="anchor-link" href="#Model-View-Controller-(MVC)">&#182;</a></h2><p>Goal: Divide responsibilities between components in an application.  This is commonly used to describe the structure of web applications.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Responsibility</th>  
+    </tr>    
+  </thead>
+  <tbody>
+    <tr>
+      <td>Model</td>  
+      <td>Handles persisting data in the database</td>
+    </tr>
+    <tr>
+      <td>View</td>  
+      <td>Handles presentation of data to user (i.e.) generating HTML</td>
+    </tr>
+    <tr>
+      <td>Controller</td>  
+      <td>Encapsulates business logic.  Connects Model and View</td>
+    </tr>  
+  </tbody>      
+</table>
+<p><img src="generic_mvc.svg" alt="generic_mvc" /></p>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
+<div id="cell-id=a7c6eb5c-7abd-4178-aad2-f8f774810061" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Django-MVC">Django MVC<a class="anchor-link" href="#Django-MVC">&#182;</a></h2><table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>Django Component</th>
+      <th>Description</th>  
+    </tr>    
+  </thead>
+  <tbody>
+    <tr>
+      <td>Model</td>  
+      <td>Models</td>
+      <td>A <code>Model</code> class is defined for each table in the database. Models provide create, update, and delete functionality</td>  
+    </tr>
+    <tr>
+      <td>View</td>  
+      <td>Templates</td>
+      <td>A Django template contains a mix of html and programming constructs (loops, branches, etc.) to generate HTML.</td>  
+    </tr>
+    <tr>
+      <td>Controller</td>  
+      <td>Views</td>
+      <td>Django views accepts an HTTP request and returns an HTTP reponse.  If you need to reuse business logic across views you may create a controller class or module.</td>  
+    </tr>  
+  </tbody>      
+</table>
+<p><img src="django_mvc.svg" alt="django_mvc" /></p>
+
+</div>
+</div>
+</div>
+</div></section></section><section ><section >
 <div id="cell-id=aa159d4c-2d76-4ebd-a8a6-5d1beee86417" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Behavioral-Patterns">Behavioral Patterns<a class="anchor-link" href="#Behavioral-Patterns">&#182;</a></h1><p>Define how classes behave and interact</p>
+<h1 id="Behavioral-Patterns">Behavioral Patterns<a class="anchor-link" href="#Behavioral-Patterns">&#182;</a></h1><p>Define how classes behave and interact.  Observer pattern is a behavioral pattern.</p>
 
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div id="cell-id=88d8381a-99b0-4f52-a505-854735bd198f" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15985,7 +15997,7 @@ p3 139,999,158,310,896
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div id="cell-id=3ba6797a-68df-44f5-8bd3-3d77a765b002" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16018,12 +16030,12 @@ p3 139,999,158,310,896
 </div>
 </div>
 </div>
-</div><div id="cell-id=3a0d892c-bafc-49a7-aafa-7d4768b2432c" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div></section></section><section ><section ><div id="cell-id=3a0d892c-bafc-49a7-aafa-7d4768b2432c" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[74]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Loop through a list (the hard way)</span>
@@ -16070,54 +16082,6 @@ p3 139,999,158,310,896
 
 </div>
 
-</div><div id="cell-id=eec3cc4f-d2d1-4569-9951-f46f30c2943c" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div id="cell-id=ef86224f-46fb-4b96-a3ab-06592fa30f5d" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div id="cell-id=10da5c61-0c4a-4c67-9c01-12deff1615d2" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div></section></section><section ><section >
 <div id="cell-id=5d41e6ef-d820-4532-bcf9-4edc50f4fc58" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -16135,12 +16099,13 @@ p3 139,999,158,310,896
 <li><a href="https://refactoring.guru">https://refactoring.guru</a></li>
 <li><a href="https://diagrams.mingrammer.com/">https://diagrams.mingrammer.com/</a></li>
 <li><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html">https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller</a></li>
 </ul>
 
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div id="cell-id=f1d48d16-89c8-4f31-84c1-339bbbc62867" class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16156,22 +16121,6 @@ p3 139,999,158,310,896
 </div>
 </div>
 </div>
-</div><div id="cell-id=fd17943b-c27a-487f-9cd8-4111867141c9" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div></section></section>
 </div>
 </div>
